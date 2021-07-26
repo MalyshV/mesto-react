@@ -1,15 +1,15 @@
-//import './App.css';
+import logo from './images/LogoVector.svg'
 
 function App() {
   return (
     <div className="page">
       <header className="header page__container">
-        <img className="header__logo" src="<%=require('./images/LogoVector.svg')%>" alt="Логотип сервиса Mesto"></img>;
+        <img className="header__logo" src={logo} alt="Логотип сервиса Mesto"></img>
       </header>
       <main className="content page__container">
         <section className="profile">
           <div className="profile__avatar">
-            <img className="profile__image" alt="фото пользователя" src=" "></img>
+            <img className="profile__image" alt="фото пользователя" src=""></img>
             <div className="profile__icon"></div>
             <div className="profile__info">
               <div className="profile__change">
