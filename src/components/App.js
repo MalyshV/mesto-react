@@ -16,9 +16,9 @@ function App() {
           <h2 className="popup__title">Редактировать профиль</h2>
           <form className="form" action="#" name="profile-form">
             <fieldset className="input-container">
-              <input id="username" className="input-container__item" type="text" name="name"  placeholder="Имя" value="" tabIndex="1" minLength="2" maxLength="40" required></input>
+              <input id="username" className="input-container__item" type="text" name="name"  placeholder="Имя" defaultValue="" tabIndex="1" minLength="2" maxLength="40" required></input>
               <span className="input-container__input-error" id="username-error"></span>
-              <input id="job" className="input-container__item" type="text" name="about" placeholder="Профессия" value="" tabIndex="2" minLength="2" maxLength="200" required></input>
+              <input id="job" className="input-container__item" type="text" name="about" placeholder="Профессия" defaultValue="" tabIndex="2" minLength="2" maxLength="200" required></input>
               <span className="input-container__input-error" id="job-error"></span>
               <button type="submit" className="input-container__button">Сохранить</button>
             </fieldset>
@@ -32,9 +32,9 @@ function App() {
           <h2 className="popup__title">Новое место</h2>
           <form className="form" action="#" name="card-form">
             <fieldset className="input-container">
-              <input id="placename" className="input-container__item" type="text" name="name" placeholder="Название" value="" tabIndex="1" minLength="2" maxLength="30" required></input>
+              <input id="placename" className="input-container__item" type="text" name="name" placeholder="Название" defaultValue="" tabIndex="1" minLength="2" maxLength="30" required></input>
               <span className="input-container__input-error" id="placename-error"></span>
-              <input id="urlcard" type="url" className="input-container__item" name="link" placeholder="Ссылка на картинку" value="" tabIndex="2" required></input>
+              <input id="urlcard" type="url" className="input-container__item" name="link" placeholder="Ссылка на картинку" defaultValue="" tabIndex="2" required></input>
               <span className="input-container__input-error" id="urlcard-error"></span>
               <button type="submit" className="input-container__button">Создать</button>
             </fieldset>
@@ -58,7 +58,7 @@ function App() {
           <h2 className="popup__title">Обновить аватар</h2>
           <form className="form" action="#" name="userPhotoform">
             <fieldset className="input-container">
-              <input id="url" type="url" className="input-container__item" name="avatar" placeholder="Ссылка на фото" value="" tabIndex="1" required></input>
+              <input id="url" type="url" className="input-container__item" name="avatar" placeholder="Ссылка на фото" defaultValue="" tabIndex="1" required></input>
               <span className="input-container__input-error" id="url-error"></span>
               <button type="submit" className="input-container__button">Сохранить</button>
             </fieldset>
