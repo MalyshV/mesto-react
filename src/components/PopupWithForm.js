@@ -1,7 +1,8 @@
 import React from 'react';
 
 function PopupWithForm(props) {
-  <div className={`popup popup_type_${props.name}`} id="popup">
+  return (
+    <div className={`popup popup_type_${props.name} ${props.isOpen && "popup_is-opened"}`} id="popup">
     <div className="popup__content popup__content_theme_input">
       <button className="popup__close page__buttons" type="button" onClick={props.onClose}></button>
       <h2 className="popup__title">{props.title}</h2>
@@ -13,6 +14,7 @@ function PopupWithForm(props) {
       </form>
     </div>
   </div>
+  )
 }
 
 // children - вложенное содержимое в виде JSX-разметки, отличающейся для всех четырёх попапов. Внутри самого компонента оно будет доступно через специальный пропс children, который также должен быть подставлен в нужном месте в JSX.

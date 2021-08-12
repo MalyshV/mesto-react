@@ -1,76 +1,63 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
-import PopupWithForm from './PopupWithForm';
+//import PopupWithForm from './PopupWithForm';
+import EditAvatarPopup from './EditAvatarPopup';
 import ImagePopup from './ImagePopup';
+import EditProfilePopup from './EditProfilePopup';
+import AddPlacePopup from './AddPlacePopup';
+import DeleteCardPopup from './DeleteCardPoup';
 
 function App() {
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+
+  function handleEditAvatarClick(e) {
+    e.preventDefault();
+    setIsEditProfilePopupOpen(true);
+  }
+
+  function handleEditProfileClick(e) {
+    e.preventDefault();
+    setIsAddPlacePopupOpen(true);
+  }
+
+  function handleAddPlaceClick(e) {
+    e.preventDefault();
+    setIsEditAvatarPopupOpen(true);
+  }
+
+  function closeAllPopups() {
+    setIsEditProfilePopupOpen(false);
+    setIsAddPlacePopupOpen(false);
+    setIsEditAvatarPopupOpen(false);
+  }
+
   return (
     <div className="page">
       <Header />
-      <Main />
+      <Main 
+        onEditAvatar={handleEditAvatarClick}
+        onEditProfile={handleEditProfileClick}
+        onAddPlace={handleAddPlaceClick}
+      />
       <Footer />
-
-      <div className="popup" id="popup">
-        <div className="popup__content popup__content_theme_input">
-          <button className="popup__close page__buttons" type="button"></button>
-          <h2 className="popup__title">Редактировать профиль</h2>
-          <form className="form" action="#" name="profile-form">
-            <fieldset className="input-container">
-              <input id="username" className="input-container__item" type="text" name="name"  placeholder="Имя" defaultValue="" tabIndex="1" minLength="2" maxLength="40" required></input>
-              <span className="input-container__input-error" id="username-error"></span>
-              <input id="job" className="input-container__item" type="text" name="about" placeholder="Профессия" defaultValue="" tabIndex="2" minLength="2" maxLength="200" required></input>
-              <span className="input-container__input-error" id="job-error"></span>
-              <button type="submit" className="input-container__button">Сохранить</button>
-            </fieldset>
-          </form>
-        </div>
-      </div>
-
-      <div className="popup" id="popup_card">
-        <div className="popup__content popup__content_theme_input">
-          <button className="popup__close page__buttons" type="button"></button>
-          <h2 className="popup__title">Новое место</h2>
-          <form className="form" action="#" name="card-form">
-            <fieldset className="input-container">
-              <input id="placename" className="input-container__item" type="text" name="name" placeholder="Название" defaultValue="" tabIndex="1" minLength="2" maxLength="30" required></input>
-              <span className="input-container__input-error" id="placename-error"></span>
-              <input id="urlcard" type="url" className="input-container__item" name="link" placeholder="Ссылка на картинку" defaultValue="" tabIndex="2" required></input>
-              <span className="input-container__input-error" id="urlcard-error"></span>
-              <button type="submit" className="input-container__button">Создать</button>
-            </fieldset>
-          </form>
-        </div>
-      </div>
-
+      <EditAvatarPopup
+        isOpen={isEditAvatarPopupOpen}
+        onClose={closeAllPopups}
+      />
+      <EditProfilePopup
+        isOpen={isEditProfilePopupOpen}
+        onClose={closeAllPopups}
+      />
+      <AddPlacePopup
+        isOpen={isAddPlacePopupOpen}
+        onClose={closeAllPopups}
+      />
       <ImagePopup />
-
-      <div className="popup" id="popup_profile_photo">
-        <div className="popup__content popup__content_theme_input">
-          <button className="popup__close page__buttons" type="button"></button>
-          <h2 className="popup__title">Обновить аватар</h2>
-          <form className="form" action="#" name="userPhotoform">
-            <fieldset className="input-container">
-              <input id="url" type="url" className="input-container__item" name="avatar" placeholder="Ссылка на фото" defaultValue="" tabIndex="1" required></input>
-              <span className="input-container__input-error" id="url-error"></span>
-              <button type="submit" className="input-container__button">Сохранить</button>
-            </fieldset>
-          </form>
-        </div>
-      </div>
-
-      <div className="popup" id="popup_delete">
-        <div className="popup__content popup__content_theme_delete">
-          <button className="popup__close page__buttons" type="button"></button>
-          <h2 className="popup__title popup__title_theme_delete">Вы уверены?</h2>
-          <form className="form" action="#" name="cardDeleteform">
-            <fieldset className="input-container">
-              <button type="submit" className="input-container__button input-container__button_type_delete">Да</button>
-            </fieldset>
-          </form>
-        </div>
-      </div>
+      <DeleteCardPopup />
 
       <template id="card-template">
         <li className="element">
