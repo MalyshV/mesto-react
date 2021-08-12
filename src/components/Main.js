@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { api } from '../utils/Api';
+import Card from './Card';
 
 console.log(api);
 
@@ -8,6 +9,7 @@ function Main(props) {
   const [userName, setUserName] = useState('');
   const [userDescription, setUserDescription] = useState('');
   const [userAvatar, setuserAvatar] = useState('');
+  const [cards, setCards] = useState([]);
 
   React.useEffect(() => {
     Promise.all([
@@ -19,9 +21,7 @@ function Main(props) {
       setUserDescription(userData.about);
       setuserAvatar(userData.avatar);
 
-      console.log(cardsData)
-
-      //section.renderInitialCards(cardsData);
+      setCards(cardsData)
     })
     .catch((error) => {
       console.log(error);
@@ -45,8 +45,11 @@ function Main(props) {
         <button className="profile__add-button page__buttons" type="submit" onClick={props.onAddPlace}></button>
       </section>
       <section className="elements">
-        <ul className="elements__list">
-        </ul>
+        <div className="elements__list">
+          {cards.map((card) => (
+            <Card key={card._id} {...card} onClick={props.onCardClick}/>
+          ))}
+        </div>
       </section>
     </main>
   )

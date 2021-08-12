@@ -58,21 +58,6 @@ function App() {
       />
       <ImagePopup />
       <DeleteCardPopup />
-
-      <template id="card-template">
-        <li className="element">
-          <img className="element__image" src="#" alt="Изображение указанного района"></img>
-          <div className="element__description">
-            <h2 className="element__title"></h2>
-            <div className="element__like-area">
-              <button className="element__like-button page__buttons" type="button"></button>
-              <span className="element__like-counter"></span>
-            </div>
-            <button className="element__delete-button page__buttons" type="reset"></button>
-          </div>
-        </li>
-      </template>
-
     </div>
   );
 }
