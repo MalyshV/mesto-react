@@ -3,19 +3,19 @@ import React from 'react';
 function Main() {
   function handleEditAvatarClick(e) {
     e.preventDefault();
-    const popup = document.querySelector('.popup');
+    const popup = document.querySelector('#popup');
     popup.classList.add('popup_is-opened');
   }
 
   function handleEditProfileClick(e) {
     e.preventDefault();
-    const popup = document.querySelector('.popup');
+    const popup = document.querySelector('#popup_profile_photo');
     popup.classList.add('popup_is-opened');
   }
 
   function handleAddPlaceClick(e) {
     e.preventDefault();
-    const popup = document.querySelector('.popup');
+    const popup = document.querySelector('#popup_card');
     popup.classList.add('popup_is-opened');
   }
 
@@ -24,7 +24,7 @@ function Main() {
       <section className="profile">
         <div className="profile__avatar">
           <img className="profile__image" alt="фото пользователя" src=""></img>
-          <button className="profile__icon" onClick={handleEditAvatarClick}></button>
+          <button className="profile__icon page__buttons" onClick={handleEditAvatarClick}></button>
           <div className="profile__info">
             <div className="profile__change">
               <h1 className="profile__user-name">Жак-Ив Кусто</h1>
@@ -41,11 +41,6 @@ function Main() {
       </section>
     </main>
   )
-  // handleEditAvatarClick
-  // handleEditProfileClick
-  // handleAddPlaceClick
-
-
 }
 
 export default Main;

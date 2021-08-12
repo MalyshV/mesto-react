@@ -2,6 +2,8 @@ import React from 'react';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
+import PopupWithForm from './PopupWithForm';
+import ImagePopup from './ImagePopup';
 
 function App() {
   return (
@@ -42,15 +44,7 @@ function App() {
         </div>
       </div>
 
-      <div className="popup" id="popup_photo">
-        <div className="popup__content popup__content_theme_photo">
-          <button className="popup__close page__buttons" type="button"></button>
-          <figure className="popup__figure">
-            <img className="popup__image" src="#" alt="Изображение указанного района"></img>
-            <figcaption className="popup__text"></figcaption>
-          </figure>
-        </div>
-      </div>
+      <ImagePopup />
 
       <div className="popup" id="popup_profile_photo">
         <div className="popup__content popup__content_theme_input">
@@ -70,9 +64,11 @@ function App() {
         <div className="popup__content popup__content_theme_delete">
           <button className="popup__close page__buttons" type="button"></button>
           <h2 className="popup__title popup__title_theme_delete">Вы уверены?</h2>
-          <fieldset className="input-container">
-            <button type="submit" className="input-container__button input-container__button_type_delete">Да</button>
-          </fieldset>
+          <form className="form" action="#" name="cardDeleteform">
+            <fieldset className="input-container">
+              <button type="submit" className="input-container__button input-container__button_type_delete">Да</button>
+            </fieldset>
+          </form>
         </div>
       </div>
 
