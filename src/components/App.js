@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
-//import PopupWithForm from './PopupWithForm';
 import EditAvatarPopup from './EditAvatarPopup';
 import ImagePopup from './ImagePopup';
 import EditProfilePopup from './EditProfilePopup';
@@ -13,6 +12,14 @@ function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+  const [selectCard, setSelectCard] = useState({});
+
+  function handleCardClick(card) {
+    setSelectCard({ 
+      name: card.name, 
+      link: card.link,
+    })
+  }
 
   function handleEditAvatarClick(e) {
     e.preventDefault();
@@ -33,6 +40,7 @@ function App() {
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
+    setSelectCard({});
   }
 
   return (
@@ -42,6 +50,7 @@ function App() {
         onEditAvatar={handleEditAvatarClick}
         onEditProfile={handleEditProfileClick}
         onAddPlace={handleAddPlaceClick}
+        onCardClick={handleCardClick}
       />
       <Footer />
       <EditAvatarPopup
@@ -56,7 +65,10 @@ function App() {
         isOpen={isAddPlacePopupOpen}
         onClose={closeAllPopups}
       />
-      <ImagePopup />
+      <ImagePopup
+        card={selectCard}
+        onClose={closeAllPopups}
+      />
       <DeleteCardPopup />
     </div>
   );

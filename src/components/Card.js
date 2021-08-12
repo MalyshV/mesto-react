@@ -1,20 +1,19 @@
 import React from 'react';
 
 function Card(props){
-    console.log(props.likes);
 
   function handleClick() {
-    props.onCardClick(props.card);
+    props.onCardClick(props);
   } 
 
   return(
       <div key={props.id} className="element">
-        <img className="element__image" src={props.link} alt={props.alt} onClick={handleClick} />
+        <img className="element__image" src={props.link} alt={props.name} onClick={handleClick} />
         <div className="element__description">
           <h2 className="element__title">{props.name}</h2>
           <div className="element__like-area">
             <button className="element__like-button page__buttons" type="button"></button>
-            <span className="element__like-counter"></span>
+            <span className="element__like-counter">0</span>
           </div>
           <button className="element__delete-button page__buttons" type="reset"></button>
         </div>

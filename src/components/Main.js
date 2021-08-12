@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { api } from '../utils/Api';
+import { api } from '../utils/api';
 import Card from './Card';
 
 console.log(api);
@@ -20,8 +20,8 @@ function Main(props) {
       setUserName(userData.name);
       setUserDescription(userData.about);
       setuserAvatar(userData.avatar);
-
-      setCards(cardsData)
+      setCards(cardsData);
+      console.log(cardsData);
     })
     .catch((error) => {
       console.log(error);
@@ -32,8 +32,9 @@ function Main(props) {
     <main className="content page__container">
       <section className="profile">
         <div className="profile__avatar">
-          <img className="profile__image" alt="фото пользователя" src={userAvatar}></img>
-          <button className="profile__icon page__buttons" onClick={props.onEditAvatar}></button>
+          <button className="profile__icon page__buttons" onClick={props.onEditAvatar}>
+            <img className="profile__image" alt="фото пользователя" src={userAvatar} />
+          </button>
           <div className="profile__info">
             <div className="profile__change">
               <h1 className="profile__user-name">{userName}</h1>
@@ -47,7 +48,7 @@ function Main(props) {
       <section className="elements">
         <div className="elements__list">
           {cards.map((card) => (
-            <Card key={card._id} {...card} onClick={props.onCardClick}/>
+            <Card key={card._id} {...card} onCardClick={props.onCardClick}/>
           ))}
         </div>
       </section>
