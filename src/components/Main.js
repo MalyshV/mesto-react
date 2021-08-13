@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { api } from '../utils/api';
 import Card from './Card';
 
-console.log(api);
-
 function Main(props) {
 
   const [userName, setUserName] = useState('');
@@ -21,7 +19,6 @@ function Main(props) {
       setUserDescription(userData.about);
       setuserAvatar(userData.avatar);
       setCards(cardsData);
-      console.log(cardsData);
     })
     .catch((error) => {
       console.log(error);
@@ -48,7 +45,7 @@ function Main(props) {
       <section className="elements">
         <div className="elements__list">
           {cards.map((card) => (
-            <Card key={card._id} {...card} onCardClick={props.onCardClick}/>
+            <Card key={card._id} {...card} onCardClick={props.onCardClick} onDeleteButtonClick={props.onDeleteButtonClick}/>
           ))}
         </div>
       </section>

@@ -4,7 +4,11 @@ function Card(props){
 
   function handleClick() {
     props.onCardClick(props);
-  } 
+  }
+
+  function handleDeletePlaceClick() {
+    props.onDeleteButtonClick(props);
+  }
 
   return(
       <div key={props.id} className="element">
@@ -15,7 +19,7 @@ function Card(props){
             <button className="element__like-button page__buttons" type="button"></button>
             <span className="element__like-counter">0</span>
           </div>
-          <button className="element__delete-button page__buttons" type="reset"></button>
+          <button className="element__delete-button page__buttons" type="reset" onClick={handleDeletePlaceClick}></button>
         </div>
       </div>
   )

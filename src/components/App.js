@@ -9,9 +9,10 @@ import AddPlacePopup from './AddPlacePopup';
 import DeleteCardPopup from './DeleteCardPoup';
 
 function App() {
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
-  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+  const [isDeletePlacePopupOpen, setIsDeletePlacePopupOpen] = useState(false);
   const [selectCard, setSelectCard] = useState({});
 
   function handleCardClick(card) {
@@ -21,25 +22,27 @@ function App() {
     })
   }
 
-  function handleEditAvatarClick(e) {
-    e.preventDefault();
+  function handleEditAvatarClick() {
     setIsEditProfilePopupOpen(true);
   }
 
-  function handleEditProfileClick(e) {
-    e.preventDefault();
+  function handleEditProfileClick() {
     setIsAddPlacePopupOpen(true);
   }
 
-  function handleAddPlaceClick(e) {
-    e.preventDefault();
+  function handleAddPlaceClick() {
     setIsEditAvatarPopupOpen(true);
+  }
+
+  function handleDeletePlaceClick() {
+    setIsDeletePlacePopupOpen(true);
   }
 
   function closeAllPopups() {
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
+    setIsDeletePlacePopupOpen(false);
     setSelectCard({});
   }
 
@@ -51,6 +54,7 @@ function App() {
         onEditProfile={handleEditProfileClick}
         onAddPlace={handleAddPlaceClick}
         onCardClick={handleCardClick}
+        onDeleteButtonClick={handleDeletePlaceClick}
       />
       <Footer />
       <EditAvatarPopup
@@ -66,12 +70,17 @@ function App() {
         onClose={closeAllPopups}
       />
       <ImagePopup
+        //isOpen={handleCardClick} - убрала, т.к. лишний, удалила из попапа 
         card={selectCard}
         onClose={closeAllPopups}
       />
-      <DeleteCardPopup />
+      <DeleteCardPopup
+        isOpen={isDeletePlacePopupOpen}
+        onClose={closeAllPopups}
+      />
     </div>
   );
 }
 
 export default App;
+
