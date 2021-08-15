@@ -24,5 +24,5 @@
 
 -----
 
-* Ссылка на GitHub Pages [ https://malyshv.github.io/mesto-react/]
+* Ссылка на GitHub Pages [ https://malyshv.github.io/mesto-react/ ]
 
