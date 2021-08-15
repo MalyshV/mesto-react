@@ -79,10 +79,6 @@ class Api {
     .then(this._checkRespons);
   }
 
-  /*loadData() {
-    return Promise.all([this.getUserInfo(), this.getInitialCards()]);
-  }*/
-
   _checkRespons(res) {
     if (res.ok) {
       return res.json();
