@@ -70,7 +70,6 @@ function App() {
         onClose={closeAllPopups}
       />
       <ImagePopup
-        //isOpen={handleCardClick} - убрала, т.к. лишний, удалила из попапа 
         card={selectCard}
         onClose={closeAllPopups}
       />

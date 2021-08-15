@@ -15,5 +15,3 @@ function ImagePopup(props) {
 }
 
 export default ImagePopup;
-
-// isOpen={props.isOpen} - убрала, т.к. консоль ругалась из-за попытки навесить на DOM-элемент
