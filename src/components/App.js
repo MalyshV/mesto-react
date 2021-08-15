@@ -23,15 +23,15 @@ function App() {
   }
 
   function handleEditAvatarClick() {
-    setIsEditProfilePopupOpen(true);
+    setIsEditAvatarPopupOpen(true);
   }
 
   function handleEditProfileClick() {
-    setIsAddPlacePopupOpen(true);
+    setIsEditProfilePopupOpen(true);
   }
 
   function handleAddPlaceClick() {
-    setIsEditAvatarPopupOpen(true);
+    setIsAddPlacePopupOpen(true);
   }
 
   function handleDeletePlaceClick() {
