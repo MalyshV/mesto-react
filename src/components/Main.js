@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { api } from '../utils/api';
 import Card from './Card';
 
@@ -9,7 +9,7 @@ function Main(props) {
   const [userAvatar, setuserAvatar] = useState('');
   const [cards, setCards] = useState([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     Promise.all([
       api.getUserInfo(),
       api.getInitialCards(),

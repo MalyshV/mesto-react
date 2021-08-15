@@ -16,10 +16,7 @@ function App() {
   const [selectCard, setSelectCard] = useState({});
 
   function handleCardClick(card) {
-    setSelectCard({ 
-      name: card.name, 
-      link: card.link,
-    })
+    setSelectCard({ name: card.name, link: card.link })
   }
 
   function handleEditAvatarClick() {
