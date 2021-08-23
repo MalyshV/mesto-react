@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
@@ -7,6 +7,7 @@ import ImagePopup from './ImagePopup';
 import EditProfilePopup from './EditProfilePopup';
 import AddPlacePopup from './AddPlacePopup';
 import DeleteCardPopup from './DeleteCardPoup';
+import { api } from '../utils/api';
 
 function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
@@ -14,6 +15,18 @@ function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isDeletePlacePopupOpen, setIsDeletePlacePopupOpen] = useState(false);
   const [selectCard, setSelectCard] = useState({});
+  const [currentUser, setCurrentUser] = useState();
+
+  useEffect(() => {
+    api.getUserInfo()
+      .then((userData) => {
+        setCurrentUser(userData.currentUser);
+        console.log(userData);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }, [])
 
   function handleCardClick(card) {
     setSelectCard({ name: card.name, link: card.link })
