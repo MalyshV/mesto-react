@@ -3,7 +3,6 @@ import { api } from '../utils/api';
 import Card from './Card';
 
 function Main(props) {
-
   const [userName, setUserName] = useState('');
   const [userDescription, setUserDescription] = useState('');
   const [userAvatar, setuserAvatar] = useState('');
