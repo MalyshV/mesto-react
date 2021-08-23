@@ -8,7 +8,7 @@ import EditProfilePopup from './EditProfilePopup';
 import AddPlacePopup from './AddPlacePopup';
 import DeleteCardPopup from './DeleteCardPoup';
 import { api } from '../utils/api';
-import { CurrentUserContext, currentUser } from '../contexts/CurrentUserContext';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
@@ -16,17 +16,21 @@ function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isDeletePlacePopupOpen, setIsDeletePlacePopupOpen] = useState(false);
   const [selectCard, setSelectCard] = useState({});
-  const [currentUser, setCurrentUser] = useState();
+  const [currentUser, setCurrentUser] = useState({});
+  const [cards, setCards] = useState([]);
 
   useEffect(() => {
-    api.getUserInfo()
-      .then((userData) => {
-        setCurrentUser(userData.currentUser);
-        console.log(userData);
-      })
-      .catch((error) => {
-        console.log(error);
-      })
+    Promise.all([
+      api.getUserInfo(),
+      api.getInitialCards(),
+    ])
+    .then(([userData, cardsData]) => {
+      setCurrentUser(userData);
+      setCards(cardsData);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
   }, [])
 
   function handleCardClick(card) {
@@ -67,6 +71,7 @@ function App() {
           onAddPlace={handleAddPlaceClick}
           onCardClick={handleCardClick}
           onDeleteButtonClick={handleDeletePlaceClick}
+          cards={cards}
         />
         <Footer />
         <EditAvatarPopup
