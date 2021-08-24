@@ -10,7 +10,7 @@ import DeleteCardPopup from './DeleteCardPoup';
 import { api } from '../utils/api';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
-function App() {
+function App() {  
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
@@ -32,6 +32,15 @@ function App() {
       console.log(error);
     })
   }, [])
+
+  function handleCardLike(card) {
+    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const changeLikeCardStatus = isLiked? api.removeLike(card._id) : api.setlike(card._id);
+    
+    changeLikeCardStatus.then((newCard) => {
+      setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+    });
+  }
 
   function handleCardClick(card) {
     setSelectCard({ name: card.name, link: card.link })
@@ -70,6 +79,7 @@ function App() {
           onEditProfile={handleEditProfileClick}
           onAddPlace={handleAddPlaceClick}
           onCardClick={handleCardClick}
+          onCardLike={handleCardLike}
           onDeleteButtonClick={handleDeletePlaceClick}
           cards={cards}
         />
@@ -100,4 +110,3 @@ function App() {
 }
 
 export default App;
-

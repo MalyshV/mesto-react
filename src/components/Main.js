@@ -25,7 +25,7 @@ function Main(props) {
       <section className="elements">
         <div className="elements__list">
           {props.cards.map(card => {
-            return <Card key={card._id} {...card} onCardClick={props.onCardClick} onDeleteButtonClick={props.onDeleteButtonClick}/>
+            return <Card key={card._id} {...card} onCardClick={props.onCardClick} onCardLike={props.onCardLike} onDeleteButtonClick={props.onDeleteButtonClick}/>
           })}
         </div>
       </section>
@@ -34,3 +34,5 @@ function Main(props) {
 }
 
 export default Main;
+
+// onCardLike={card.onCardLike} - убрала пока из карточки

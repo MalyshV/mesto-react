@@ -20,19 +20,25 @@ function Card(props){
     props.onDeleteButtonClick(props);
   }
 
+  function handleLikeClick() {
+    props.onCardLike(props);
+  }
+
   return(
       <div key={props.id} className="element">
         <img className="element__image" src={props.link} alt={props.name} onClick={handleClick} />
         <div className="element__description">
           <h2 className="element__title">{props.name}</h2>
           <div className="element__like-area">
-            <button className={`${cardLikeButtonClassName} page__buttons`} type="button"></button>
+            <button className={cardLikeButtonClassName} type="button" onClick={handleLikeClick}></button>
             <span className="element__like-counter">{props.likes.length}</span>
           </div>
-          <button className={`${cardDeleteButtonClassName} page__buttons`} type="reset" onClick={handleDeletePlaceClick}></button>
+          <button className={cardDeleteButtonClassName} type="reset" onClick={handleDeletePlaceClick}></button>
         </div>
       </div>
   )
 }
 
 export default Card;
+
+// page__buttons - временно убрала из кнопок класс. надо добавить!!!
