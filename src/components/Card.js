@@ -40,5 +40,3 @@ function Card(props){
 }
 
 export default Card;
-
-// page__buttons - временно убрала из кнопок класс. надо добавить!!!
