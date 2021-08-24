@@ -2,7 +2,7 @@ import React from 'react';
 
 function ImagePopup(props) {
   return(
-    <div className={`popup ${props.card.link ? "popup_is-opened" : ""}`} onClose={props.onClose}>
+    <div className={`popup ${props.card.link ? 'popup_is-opened' : ''}`} onClose={props.onClose}>
       <div className="popup__content popup__content_theme_photo">
         <button className="popup__close page__buttons" type="button" onClick={props.onClose}></button>
         <figure className="popup__figure">
