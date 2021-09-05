@@ -6,7 +6,7 @@ import EditAvatarPopup from './EditAvatarPopup';
 import ImagePopup from './ImagePopup';
 import EditProfilePopup from './EditProfilePopup';
 import AddPlacePopup from './AddPlacePopup';
-import DeleteCardPopup from './DeleteCardPoup';
+import DeleteCardPopup from './DeleteCardPoup'; 
 import api from '../utils/api';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
@@ -14,10 +14,10 @@ function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
-  const [isDeletePlacePopupOpen, setIsDeletePlacePopupOpen] = useState(false);
   const [selectCard, setSelectCard] = useState({});
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
+  //const [isDeletePlacePopupOpen, setIsDeletePlacePopupOpen] = useState(false); 
 
   useEffect(() => {
     Promise.all([
@@ -42,6 +42,17 @@ function App() {
     });
   }
 
+  function handleDeleteCard(card) {
+    api.removeCard(card._id)
+      .then(() => {
+        setCards((state) => state.filter((c) => c._id !== card._id));
+        closeAllPopups();
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
+
   function handleCardClick(card) {
     setSelectCard({ name: card.name, link: card.link })
   }
@@ -58,15 +69,15 @@ function App() {
     setIsAddPlacePopupOpen(true);
   }
 
-  function handleDeletePlaceClick() {
-    setIsDeletePlacePopupOpen(true);
-  }
+  /*function handleDeletePlaceClick() { временно закроем попап с подтверждением удаления карточки
+    setIsDeletePlacePopupOpen(true); и реализуем удаление карточки напрямую
+  }*/
 
   function closeAllPopups() {
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
-    setIsDeletePlacePopupOpen(false);
+    //setIsDeletePlacePopupOpen(false); на время, пока карточка удаляется напрямую 
     setSelectCard({});
   }
 
@@ -113,7 +124,8 @@ function App() {
           onAddPlaceButtonClick={handleAddPlaceClick}
           onCardClick={handleCardClick}
           onCardLike={handleCardLike}
-          onDeleteButtonClick={handleDeletePlaceClick}
+          onDeleteButtonClick={handleDeleteCard}
+          //onDeleteButtonClick={handleDeletePlaceClick} временно убрала открытые попапа
           cards={cards}
         />
         <Footer />
@@ -137,8 +149,10 @@ function App() {
           onClose={closeAllPopups}
         />
         <DeleteCardPopup
-          isOpen={isDeletePlacePopupOpen}
-          onClose={closeAllPopups}
+          //onClose={closeAllPopups} // закомментила на время пока в доработке
+          //card={selectCard}
+          //onSubmit={handleDeleteCard}
+          //isOpen={isDeletePlacePopupOpen}
         />
       </div>
     </CurrentUserContext.Provider>
