@@ -7,7 +7,7 @@ import ImagePopup from './ImagePopup';
 import EditProfilePopup from './EditProfilePopup';
 import AddPlacePopup from './AddPlacePopup';
 import DeleteCardPopup from './DeleteCardPoup';
-import { api } from '../utils/api';
+import api from '../utils/api';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function App() {
@@ -72,17 +72,23 @@ function App() {
 
   function handleUpdateUser(data) {
     api.setUserInfo(data)
-      .then((userData) => {
-        setCurrentUser(userData);
+      .then((data) => {
+        setCurrentUser(data);
         closeAllPopups();
+      })
+      .catch((err) => {
+        console.log(err);
       })
   }
 
   function handleUpdateAvatar(data) {
     api.setUserAvatar(data)
-      .then((userData) => {
-        setCurrentUser(userData.avatar);
+      .then((data) => {
+        setCurrentUser(data);
         closeAllPopups();
+      })
+      .catch((err) => {
+        console.log(err);
       })
   }
 
@@ -91,6 +97,9 @@ function App() {
       .then((newCard) => {
         setCards([newCard, ...cards]);
         closeAllPopups();
+      })
+      .catch((err) => {
+        console.log(err);
       })
   }
 
@@ -101,7 +110,7 @@ function App() {
         <Main 
           onEditAvatar={handleEditAvatarClick}
           onEditProfile={handleEditProfileClick}
-          onAddPlace={handleAddPlaceClick}
+          onAddPlaceButtonClick={handleAddPlaceClick}
           onCardClick={handleCardClick}
           onCardLike={handleCardLike}
           onDeleteButtonClick={handleDeletePlaceClick}

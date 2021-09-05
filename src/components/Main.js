@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Card from './Card';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function Main(props) {
-  const currentUser = React.useContext(CurrentUserContext);
+  const currentUser = useContext(CurrentUserContext);
 
   return(
     <main className="content page__container">
@@ -15,12 +15,12 @@ function Main(props) {
           <div className="profile__info">
             <div className="profile__change">
               <h1 className="profile__user-name">{currentUser.name}</h1>
-              <button className="profile__edit-button page__buttons" type="button" onClick={props.onEditProfile}></button>
+              <button className="profile__edit-button page__buttons" type="button" onClick={props.onEditProfile} />
             </div>
             <p className="profile__user-job">{currentUser.about}</p>
           </div>
         </div>
-        <button className="profile__add-button page__buttons" type="submit" onClick={props.onAddPlace}></button>
+        <button className="profile__add-button page__buttons" type="submit" onClick={props.onAddPlaceButtonClick} />
       </section>
       <section className="elements">
         <div className="elements__list">
@@ -34,5 +34,3 @@ function Main(props) {
 }
 
 export default Main;
-
-// onCardLike={card.onCardLike} - убрала пока из карточки
