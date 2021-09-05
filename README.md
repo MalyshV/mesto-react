@@ -9,6 +9,7 @@
 
 * React
 * React-хуки useState и useEffect
+* React Router и работа с данными
 * Методология [**БЭМ**](https://ru.bem.info/)
 * Cоздание коммитов по [**Conventional Commits**](https://www.conventionalcommits.org/ru/v1.0.0-beta.4/)
 * Адаптивная верстка по макетам из Фигмы для разрешений: min 320px - max 1280px
