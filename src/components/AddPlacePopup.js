@@ -12,8 +12,6 @@ function AddPlacePopup(props) {
       name: nameRef.current.value,
       link: linkRef.current.value,
     })
-
-    console.log(nameRef.current.value);
   }
 
 
